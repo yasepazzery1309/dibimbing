@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface CartItem {
   id: number;
@@ -17,6 +17,8 @@ interface CartDrawerProps {
 }
 
 export default function CartDrawer({ cartItems, isOpen, onClose, onUpdateQuantity, onRemove }: CartDrawerProps) {
+  const [notes, setNotes] = useState('');
+
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(price);
   };
@@ -30,6 +32,11 @@ export default function CartDrawer({ cartItems, isOpen, onClose, onUpdateQuantit
     cartItems.forEach(item => {
       message += `- ${item.quantity}x ${item.name} (${formatPrice(item.price * item.quantity)})\n`;
     });
+    
+    if (notes.trim() !== '') {
+      message += `\n*Catatan Tambahan:*\n${notes}\n`;
+    }
+    
     message += `\n*Total Harga: ${formatPrice(totalPrice)}*`;
     message += `\n\nMohon info untuk pembayaran dan pengiriman. Terima kasih!`;
 
@@ -68,6 +75,16 @@ export default function CartDrawer({ cartItems, isOpen, onClose, onUpdateQuantit
             ))
           )}
         </div>
+
+        {cartItems.length > 0 && (
+          <div className="cart-notes">
+            <textarea 
+              placeholder="Tambahkan catatan pesanan (opsional)..."
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
+            ></textarea>
+          </div>
+        )}
 
         <div className="cart-footer">
           <div className="cart-total">

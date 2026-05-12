@@ -608,12 +608,141 @@
   to { opacity: 1; }
 }
 
-/* Responsive */
+/* Promo Banner */
+.promo-banner {
+  background-color: var(--color-primary);
+  color: #fff;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  position: relative;
+  z-index: 101;
+}
+
+/* Navbar Update */
+.navbar {
+  top: 34px; /* offset for promo banner */
+}
+
+.hamburger-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--color-text);
+  margin-left: 1rem;
+}
+
+/* Toast Notification */
+.toast-notification {
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border: 1px solid rgba(0,0,0,0.05);
+  font-weight: 600;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.toast-notification.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Fade In Animation */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
+  visibility: hidden;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, visibility;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+}
+
+/* Gallery Section */
+.gallery-section {
+  padding: 5rem 5%;
+  background-color: var(--color-surface);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.gallery-item {
+  height: 250px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Cart Notes */
+.cart-notes {
+  padding: 0 1.5rem 1.5rem;
+}
+
+.cart-notes textarea {
+  width: 100%;
+  height: 80px;
+  padding: 0.8rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.1);
+  resize: none;
+  font-family: inherit;
+  font-size: 0.9rem;
+  background-color: var(--color-bg);
+}
+
+/* Updated Responsive */
 @media (max-width: 768px) {
   .hero-title {
     font-size: 3rem;
   }
+  .hamburger-btn {
+    display: block;
+  }
   .nav-links {
-    display: none;
+    position: fixed;
+    top: 80px;
+    left: -100%;
+    flex-direction: column;
+    background-color: var(--color-surface);
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    padding: 2rem 0;
+  }
+  .nav-links.active {
+    left: 0;
   }
 }

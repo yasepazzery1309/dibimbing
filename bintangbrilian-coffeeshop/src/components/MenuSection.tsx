@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { menuItems, categories } from '../data/content'
+import FadeInSection from './FadeInSection'
 
 interface MenuSectionProps {
   onAddToCart: (item: any) => void;
@@ -18,37 +19,39 @@ export default function MenuSection({ onAddToCart }: MenuSectionProps) {
 
   return (
     <section id="menu" className="menu-section">
-      <h2 className="section-title">Menu Kami</h2>
-      
-      <div className="menu-filters">
-        {categories.map(category => (
-          <button 
-            key={category}
-            className={`filter-btn ${activeCategory === category ? 'active' : ''}`}
-            onClick={() => setActiveCategory(category)}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
+      <FadeInSection>
+        <h2 className="section-title">Menu Kami</h2>
+        
+        <div className="menu-filters">
+          {categories.map(category => (
+            <button 
+              key={category}
+              className={`filter-btn ${activeCategory === category ? 'active' : ''}`}
+              onClick={() => setActiveCategory(category)}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
 
-      <div className="menu-grid">
-        {filteredMenu.map(item => (
-          <div key={item.id} className="menu-item">
-            <div className="menu-img-container">
-              <img src={item.img} alt={item.name} className="menu-img" />
-            </div>
-            <div className="menu-info">
-              <h3 className="menu-name">{item.name}</h3>
-              <p className="menu-desc">{item.desc}</p>
-              <div className="menu-bottom">
-                <div className="menu-price">{formatPrice(item.price as number)}</div>
-                <button className="add-to-cart-btn" onClick={() => onAddToCart(item)}>+ Tambah</button>
+        <div className="menu-grid">
+          {filteredMenu.map(item => (
+            <div key={item.id} className="menu-item">
+              <div className="menu-img-container">
+                <img src={item.img} alt={item.name} className="menu-img" />
+              </div>
+              <div className="menu-info">
+                <h3 className="menu-name">{item.name}</h3>
+                <p className="menu-desc">{item.desc}</p>
+                <div className="menu-bottom">
+                  <div className="menu-price">{formatPrice(item.price as number)}</div>
+                  <button className="add-to-cart-btn" onClick={() => onAddToCart(item)}>+ Tambah</button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </FadeInSection>
     </section>
   )
 }

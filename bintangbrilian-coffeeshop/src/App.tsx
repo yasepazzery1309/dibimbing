@@ -3,10 +3,12 @@ import './App.css'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
 import MenuSection from './components/MenuSection'
+import GallerySection from './components/GallerySection'
 import ReviewSection from './components/ReviewSection'
 import Footer from './components/Footer'
 import FloatingWhatsApp from './components/FloatingWhatsApp'
 import CartDrawer from './components/CartDrawer'
+import Toast from './components/Toast'
 
 interface CartItem {
   id: number;
@@ -19,6 +21,17 @@ interface CartItem {
 function App() {
   const [cartItems, setCartItems] = useState<CartItem[]>([])
   const [isCartOpen, setIsCartOpen] = useState(false)
+  
+  const [toastMessage, setToastMessage] = useState('')
+  const [isToastVisible, setIsToastVisible] = useState(false)
+
+  const showToast = (message: string) => {
+    setToastMessage(message)
+    setIsToastVisible(true)
+    setTimeout(() => {
+      setIsToastVisible(false)
+    }, 3000)
+  }
 
   const handleAddToCart = (item: any) => {
     setCartItems(prev => {
@@ -28,7 +41,7 @@ function App() {
       }
       return [...prev, { ...item, quantity: 1 }]
     })
-    setIsCartOpen(true)
+    showToast(`1x ${item.name} ditambahkan ke keranjang!`)
   }
 
   const handleUpdateQuantity = (id: number, delta: number) => {
@@ -52,6 +65,7 @@ function App() {
       <Navbar cartCount={totalItems} onOpenCart={() => setIsCartOpen(true)} />
       <HeroSection />
       <MenuSection onAddToCart={handleAddToCart} />
+      <GallerySection />
       <ReviewSection />
       <Footer />
       <FloatingWhatsApp />
@@ -63,6 +77,8 @@ function App() {
         onUpdateQuantity={handleUpdateQuantity}
         onRemove={handleRemove}
       />
+
+      <Toast message={toastMessage} isVisible={isToastVisible} />
     </div>
   )
 }
