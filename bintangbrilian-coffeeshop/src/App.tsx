@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
 import MenuSection from './components/MenuSection'
 import GallerySection from './components/GallerySection'
+import AboutSection from './components/AboutSection'
 import ReviewSection from './components/ReviewSection'
 import Footer from './components/Footer'
 import FloatingWhatsApp from './components/FloatingWhatsApp'
@@ -67,6 +68,7 @@ function App() {
       <MenuSection onAddToCart={handleAddToCart} />
       <GallerySection />
       <ReviewSection />
+      <AboutSection />
       <Footer />
       <FloatingWhatsApp />
       
