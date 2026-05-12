@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface NavbarProps {
   cartCount: number;
@@ -7,6 +7,20 @@ interface NavbarProps {
 
 export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [theme, setTheme] = useState('light');
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
+  };
 
   return (
     <>
@@ -31,6 +45,9 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
           <a href="#about" onClick={() => setIsMenuOpen(false)}>Tentang Kami</a>
         </div>
         <div className="nav-actions">
+          <button className="theme-toggle-btn" onClick={toggleTheme} title="Ganti Tema">
+            {theme === 'light' ? '🌙' : '☀️'}
+          </button>
           <button className="cart-icon-btn" onClick={onOpenCart}>
             🛒 {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
           </button>

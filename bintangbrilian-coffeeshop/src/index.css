@@ -8,6 +8,14 @@
   --transition: all 0.3s ease;
 }
 
+[data-theme="dark"] {
+  --color-bg: #140d0b;
+  --color-surface: #1e1411;
+  --color-primary: #d4a373;
+  --color-text: #fefae0;
+  --color-text-muted: #a69e9a;
+}
+
 * {
   margin: 0;
   padding: 0;
