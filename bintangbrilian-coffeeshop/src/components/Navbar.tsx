@@ -1,4 +1,9 @@
-export default function Navbar() {
+interface NavbarProps {
+  cartCount: number;
+  onOpenCart: () => void;
+}
+
+export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
   return (
     <nav className="navbar">
       <div className="logo">
@@ -9,12 +14,17 @@ export default function Navbar() {
           <line x1="10" y1="2" x2="10" y2="4"></line>
           <line x1="14" y1="2" x2="14" y2="4"></line>
         </svg>
-        Bintangbrilian Coffee
+        Bintangbrilian
       </div>
       <div className="nav-links">
         <a href="#home">Beranda</a>
         <a href="#menu">Menu</a>
         <a href="#about">Tentang Kami</a>
+      </div>
+      <div className="nav-actions">
+        <button className="cart-icon-btn" onClick={onOpenCart}>
+          🛒 <span className="cart-badge">{cartCount}</span>
+        </button>
       </div>
     </nav>
   )

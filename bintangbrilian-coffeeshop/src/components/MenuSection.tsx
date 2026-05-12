@@ -1,12 +1,20 @@
 import { useState } from 'react'
 import { menuItems, categories } from '../data/content'
 
-export default function MenuSection() {
+interface MenuSectionProps {
+  onAddToCart: (item: any) => void;
+}
+
+export default function MenuSection({ onAddToCart }: MenuSectionProps) {
   const [activeCategory, setActiveCategory] = useState('Semua')
 
   const filteredMenu = activeCategory === 'Semua' 
     ? menuItems 
     : menuItems.filter(item => item.category === activeCategory)
+
+  const formatPrice = (price: number) => {
+    return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(price);
+  };
 
   return (
     <section id="menu" className="menu-section">
@@ -33,7 +41,10 @@ export default function MenuSection() {
             <div className="menu-info">
               <h3 className="menu-name">{item.name}</h3>
               <p className="menu-desc">{item.desc}</p>
-              <div className="menu-price">{item.price}</div>
+              <div className="menu-bottom">
+                <div className="menu-price">{formatPrice(item.price as number)}</div>
+                <button className="add-to-cart-btn" onClick={() => onAddToCart(item)}>+ Tambah</button>
+              </div>
             </div>
           </div>
         ))}
