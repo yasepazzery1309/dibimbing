@@ -14,10 +14,11 @@
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(20, 13, 11, 0.8);
+  background: rgba(253, 251, 247, 0.9);
   backdrop-filter: blur(10px);
   z-index: 100;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
 }
 
 .logo {
@@ -36,9 +37,10 @@
 
 .nav-links a {
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
+  color: var(--color-text-muted);
   transition: var(--transition);
 }
 
@@ -64,7 +66,7 @@
   height: 100%;
   object-fit: cover;
   z-index: -2;
-  opacity: 0.4;
+  opacity: 0.8;
 }
 
 .hero-overlay {
@@ -73,7 +75,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, rgba(20, 13, 11, 0.9) 0%, rgba(20, 13, 11, 0.3) 100%);
+  background: linear-gradient(to right, rgba(253, 251, 247, 0.95) 0%, rgba(253, 251, 247, 0.4) 100%);
   z-index: -1;
 }
 
@@ -86,6 +88,7 @@
   font-size: 4rem;
   line-height: 1.1;
   margin-bottom: 1rem;
+  color: var(--color-text);
 }
 
 .hero-title span {
@@ -101,18 +104,19 @@
 .btn-primary {
   display: inline-block;
   background-color: var(--color-primary);
-  color: var(--color-bg);
+  color: #fff;
   padding: 1rem 2rem;
   font-size: 1.1rem;
   font-weight: 600;
   border-radius: 50px;
   transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(196, 123, 87, 0.3);
 }
 
 .btn-primary:hover {
-  background-color: #e6b88a;
+  background-color: #a36547;
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(212, 163, 115, 0.2);
+  box-shadow: 0 10px 20px rgba(196, 123, 87, 0.4);
 }
 
 /* Menu Section */
@@ -138,22 +142,24 @@
 
 .filter-btn {
   padding: 0.5rem 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50px;
   color: var(--color-text-muted);
   font-size: 0.9rem;
+  font-weight: 500;
   transition: var(--transition);
 }
 
 .filter-btn:hover {
   border-color: var(--color-primary);
-  color: var(--color-text);
+  color: var(--color-primary);
 }
 
 .filter-btn.active {
   background-color: var(--color-primary);
-  color: var(--color-bg);
+  color: #fff;
   border-color: var(--color-primary);
+  box-shadow: 0 4px 10px rgba(196, 123, 87, 0.2);
 }
 
 .menu-grid {
@@ -164,16 +170,16 @@
 
 .menu-item {
   background-color: var(--color-surface);
-  border-radius: 16px;
+  border-radius: 20px;
   overflow: hidden;
   transition: var(--transition);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.02);
 }
 
 .menu-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  border-color: rgba(212, 163, 115, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
 .menu-img-container {
@@ -200,6 +206,7 @@
 .menu-name {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
+  color: var(--color-text);
 }
 
 .menu-desc {
@@ -217,7 +224,7 @@
 /* Reviews Section */
 .reviews-section {
   padding: 5rem 5%;
-  background-color: var(--color-surface);
+  background-color: #f7f3ec; /* Slightly darker cream for contrast */
 }
 
 .reviews-grid {
@@ -227,10 +234,10 @@
 }
 
 .review-card {
-  background-color: var(--color-bg);
+  background-color: var(--color-surface);
   padding: 2rem;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -239,7 +246,7 @@
 
 .review-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(212, 163, 115, 0.3);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
 }
 
 .review-rating {
@@ -276,9 +283,9 @@
 
 /* Rich Footer */
 .footer-rich {
-  background-color: #0f0a08;
+  background-color: var(--color-surface);
   padding: 5rem 5% 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
   margin-top: auto;
 }
 
@@ -300,7 +307,7 @@
 }
 
 .footer-col h3 {
-  color: var(--color-primary);
+  color: var(--color-text);
   margin-bottom: 1.5rem;
   font-size: 1.2rem;
 }
@@ -314,7 +321,7 @@
 .footer-bottom {
   text-align: center;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .footer-text {
@@ -381,6 +388,6 @@
     font-size: 3rem;
   }
   .nav-links {
-    display: none; /* Can add hamburger menu later */
+    display: none;
   }
 }
